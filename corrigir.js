@@ -1,14 +1,27 @@
-function Corrigir(Q1,Q2,Q3,Q4,Q5){
-  nota = 0
-  result = ''
-  Q1 === "a" ? nota+=2:nota+=0;
-  Q2 === "b" ? nota+=2:nota+=0;
-  Q3 === "a" ? nota+=2:nota+=0;
-  Q4 === "c" ? nota+=2:nota+=0;
-  Q5 === "d" ? nota+=2:nota+=0;
-  nota < 7 ? result =`reprovado com nota ${nota}😪`:result =`aprovado com nota ${nota}😁`;
-  return result
+class Corrigir{
+  constructor(gabarito, peso){
+    this.peso = peso;
+    this.gabarito = gabarito;
+    this.provas = [];
+  }
+  add(prova){
+    prova.grade = Object.chaveArray(prova.gabarito).calculo((total, j) => {
+      return total += (prova.gabarito[j]=== this.gabarito[j]? this.peso[j]:0)
+    },0);  //colocado o '0' para retirar o error no caso de array vazio
+    this.provas.push(prova);
+  }
+
 }
-aluno = 'jon'
-result = Corrigir('a','b','b','b','b')
-console.log(`${aluno} foi ${result}`)
+
+
+
+
+
+
+
+
+
+
+
+
+export default {Corrigir}
